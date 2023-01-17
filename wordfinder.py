@@ -17,3 +17,9 @@ class WordFinder:
     def random(self):
         """Returns random word"""
         return random.choice(self.words)
+
+class SpecialWordFinder(WordFinder):
+    """Finds random word from dictionary disreagarding comments and blank lines"""
+    def parse(self, word_file):
+        """Strips words of extra characters and makes list of non-comment words"""
+        return [word.strip() for word in word_file if word.strip() and not word.startswith("#")]
